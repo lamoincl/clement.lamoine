@@ -35,7 +35,7 @@ public class TradeHistory {
                 .map(x -> x.getTrader().getName())
                 .sorted()
                 .distinct()
-                .reduce("Traders: ", (tradersStr, nameStr) -> tradersStr + " " + nameStr);
+                .reduce("Traders:", (tradersStr, nameStr) -> tradersStr + " " + nameStr);
     }
 
     public boolean isSomeTraderFromCity(String cityName){
@@ -64,29 +64,5 @@ public class TradeHistory {
     public Map<Boolean, List<Transaction>> partitionTransactionsByTraderIsVegetarian(){
         Map<Boolean, List<Transaction>> transactionsBy = new HashMap<Boolean, List<Transaction>>();
         return transactionsBy;
-    }
-
-    public static void main(String[] args) {
-        Trader t1 = new Trader("Nils", "Chambery", false);
-        Trader t2 = new Trader("Porek", "Prague", true);
-        Trader t3 = new Trader("Clement", "Ville-la-Grand", true);
-        Trader t4 = new Trader("kant1", "Annecy", false);
-        Trader t5 = new Trader("VP", "Prague", false);
-
-        ArrayList<Transaction> transactions = new ArrayList<>();
-        transactions.add(new Transaction(t1, 2011, 50));
-        transactions.add(new Transaction(t2, 2005, 150));
-        transactions.add(new Transaction(t3, 2022, 5000));
-        transactions.add(new Transaction(t4, 2010, 60));
-        transactions.add(new Transaction(t5, 2011, 35));
-        transactions.add(new Transaction(t1, 2012, 56));
-        transactions.add(new Transaction(t4, 2011, 75));
-
-        TradeHistory th = new TradeHistory(transactions);
-
-        System.out.println(th.findAllTransactionsIn2011AndSortByValueAsc());
-        System.out.println(th.getUniqueCitiesSortedAsc());
-        System.out.println(th.getSingleStringFromUniqueTradersNamesSortByNameAsc());
-        System.out.println(th.isSomeTraderFromCity("Chambery"));
     }
 }
