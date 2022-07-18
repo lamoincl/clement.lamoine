@@ -1,0 +1,8 @@
+A)
+context: Departement
+inv: departmentBudget >= 0
+
+B)
+context: Employee::increaseTheSalary(amount:float):float
+pre: amount > 0 
+post: self.income = self.income@pre + amount 
